@@ -23,14 +23,14 @@ dummy_y_trn = np.delete(dummy_y_trn, obj=0, axis=1)
 
 
 ## Function that creates our neural network
-def entire_NN(nodes, num_layers, num_input_nodes):
+def bulk_NN(nodes, num_layers, num_input_nodes):
     # Creating model
     model = Sequential()
 
-    model.add(Dense(num_input_nodes, input_dim=5, activation='gelu'))
+    model.add(Dense(num_input_nodes, input_dim=5, activation='sigmoid'))
 
     for i in range(num_layers):
-        model.add(Dense(nodes[i], activation='gelu'))
+        model.add(Dense(nodes[i], activation='sigmoid'))
 
     ## Adding output layer with softmax activation function
     model.add(Dense(27, activation='softmax'))
@@ -57,6 +57,7 @@ def testAccuracy(preds, labels):
     return final
 
 while True:
+
     epochs_num = random.randint(90,300)
     batch_num = random.randint(3,100)
     num_layers = random.randint(1,11)
@@ -66,12 +67,22 @@ while True:
     for i in range(num_layers):
         num_nodes.append(random.randint(1,800))
 
-    model = entire_NN(num_nodes, num_layers, num_input_nodes)
+    start_time = time.time()
+    model = bulk_NN(num_nodes, num_layers, num_input_nodes)
 
     model.fit(x_trn, dummy_y_trn, epochs=epochs_num, batch_size=batch_num, verbose=0)
 
     predictions = predict(model,x_tst)
     x = testAccuracy(predictions,y_tst)
+
+    runtime = time.time() - start_time
+
+    r_time = open("bulk_runtimes.tsv", "a")
+    r_time_filesize = os.path.getsize("bulk_runtimes.tsv")
+    if(r_time_filesize > 0):
+        r_time.write("\n")
+    r_time.write("%f" % runtime)
+    r_time.close()
 
     bulk_epoch = open("num_epochs.tsv", "a")
     l_bulk_filesize = os.path.getsize("num_epochs.tsv")
