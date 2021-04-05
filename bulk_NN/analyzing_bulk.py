@@ -7,13 +7,13 @@ bulk_num_layers = np.genfromtxt('bulk_layers.tsv', delimiter='\t')
 bulk_nodes = np.genfromtxt('bulk_nodes.tsv', delimiter='\t')
 input_nodes = np.genfromtxt('input_nodes.tsv', delimiter='\t')
 
-acc_indeces = np.zeros(6)
-acc_max = np.zeros(6)
-bulk_b_index = np.zeros(6)
-bulk_e_index = np.zeros(6)
-bulk_nl_index = np.zeros(6)
-bulk_nodes_index = np.zeros(6)
-bulk_node_input_index = np.zeros(6)
+acc_indeces = np.zeros(5)
+acc_max = np.zeros(5)
+bulk_b_index = np.zeros(5)
+bulk_e_index = np.zeros(5)
+bulk_nl_index = np.zeros(5)
+bulk_nodes_index = np.zeros(5)
+bulk_node_input_index = np.zeros(5)
 acc_list = bulk_acc.tolist()
 
 for i in range(len(acc_indeces)):
@@ -25,12 +25,12 @@ for i in range(len(acc_indeces)):
     bulk_b = bulk_batch[max_index]
     bulk_e = bulk_epoch[max_index]
     bulk_nl = bulk_num_layers[max_index]
-    bulk_nodes = bulk_nodes_index[max_index]
-    bulk_node_input = bulk_node_input_index[max_index]
+    bulk_nodess = bulk_nodes[max_index]
+    bulk_node_input = input_nodes[max_index]
     bulk_b_index[i] = bulk_b
     bulk_e_index[i] = bulk_e
     bulk_nl_index[i] = bulk_nl
-    bulk_nodes_index[i] = bulk_nodes
+    bulk_nodes_index[i] = bulk_nodess
     bulk_node_input_index[i] = bulk_node_input
 
 
