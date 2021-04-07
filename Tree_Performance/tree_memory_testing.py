@@ -3,7 +3,6 @@ import pandas as pd
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.utils import np_utils
-from memory_profiler import profile
 import time
 
 start_time = time.time()

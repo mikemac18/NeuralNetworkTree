@@ -1,11 +1,13 @@
 import numpy as np
 
-acc = np.genfromtxt('accuracies.tsv', delimiter='\t')
+acc = np.genfromtxt('accuracies_sigmoid.tsv', delimiter='\t')
 leaf_batch = np.genfromtxt('leaf_batch_size.tsv', delimiter='\t')
 leaf_epoch = np.genfromtxt('leaf_epochs.tsv', delimiter='\t')
 root_batch = np.genfromtxt('root_batch.tsv', delimiter='\t')
 root_epoch = np.genfromtxt('root_epochs.tsv', delimiter='\t')
 runtime = np.genfromtxt('tree_runtimes.tsv', delimiter='\t')
+
+print(sum(acc) / len(acc))
 
 acc_indeces = np.zeros(5)
 acc_max = np.zeros(5)

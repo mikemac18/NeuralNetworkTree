@@ -7,6 +7,8 @@ root_batch = np.genfromtxt('root_batch_relu.tsv', delimiter='\t')
 root_epoch = np.genfromtxt('root_epochs_relu.tsv', delimiter='\t')
 runtime = np.genfromtxt('tree_runtimes_relu.tsv', delimiter='\t')
 
+print(sum(acc) / len(acc))
+
 acc_indeces = np.zeros(5)
 acc_max = np.zeros(5)
 lf_b_index = np.zeros(5)
