@@ -1,0 +1,260 @@
+Filename: tree_memory_testing.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   106    249.6 MiB    249.6 MiB           1   @profile
+   107                                         def predict(model,x):
+   108    250.3 MiB      0.7 MiB           1       preds = np.argmax(model.predict(x), axis=-1)
+   109    250.3 MiB      0.0 MiB         500       for i in range(len(preds)):
+   110    250.3 MiB      0.0 MiB         499           preds[i] = preds[i] + 1
+   111    250.3 MiB      0.0 MiB           1       return preds
+
+
+Filename: tree_memory_testing.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+    70    224.7 MiB    224.7 MiB           1   @profile
+    71                                         def leaf_NN(x_trn, dummy_y_trn, x_tst, num_output):
+    72                                             ## Creating model
+    73    226.4 MiB      1.7 MiB           1       model = Sequential()
+    74                                             ## Adding input layer with sigmoid activation function
+    75    228.0 MiB      1.6 MiB           1       model.add(Dense(8, input_dim=1, activation='sigmoid'))
+    76                                             ## Adding output layer with softmax activation function
+    77    228.1 MiB      0.1 MiB           1       model.add(Dense(num_output, activation='softmax'))
+    78                                             ## Compile model
+    79    228.4 MiB      0.2 MiB           1       model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+    80                                             ## Fitting model
+    81    249.6 MiB     21.2 MiB           1       model.fit(x_trn, dummy_y_trn, epochs=240, batch_size=55, verbose=0)
+    82                                             ## Getting predictions
+    83    250.3 MiB      0.7 MiB           1       preds = predict(model,x_tst)
+    84    250.3 MiB      0.0 MiB           1       return preds
+
+
+Filename: tree_memory_testing.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   130    250.3 MiB    250.3 MiB           1       @profile
+   131                                             def insert(self, data):
+   132    250.3 MiB      0.0 MiB           1           self.children.append(Node(data))
+
+
+Filename: tree_memory_testing.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   106    255.5 MiB    255.5 MiB           1   @profile
+   107                                         def predict(model,x):
+   108    255.7 MiB      0.2 MiB           1       preds = np.argmax(model.predict(x), axis=-1)
+   109    255.7 MiB      0.0 MiB         500       for i in range(len(preds)):
+   110    255.7 MiB      0.0 MiB         499           preds[i] = preds[i] + 1
+   111    255.7 MiB      0.0 MiB           1       return preds
+
+
+Filename: tree_memory_testing.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+    70    250.3 MiB    250.3 MiB           1   @profile
+    71                                         def leaf_NN(x_trn, dummy_y_trn, x_tst, num_output):
+    72                                             ## Creating model
+    73    250.3 MiB      0.0 MiB           1       model = Sequential()
+    74                                             ## Adding input layer with sigmoid activation function
+    75    250.3 MiB      0.0 MiB           1       model.add(Dense(8, input_dim=1, activation='sigmoid'))
+    76                                             ## Adding output layer with softmax activation function
+    77    250.3 MiB      0.0 MiB           1       model.add(Dense(num_output, activation='softmax'))
+    78                                             ## Compile model
+    79    250.3 MiB      0.0 MiB           1       model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+    80                                             ## Fitting model
+    81    255.5 MiB      5.1 MiB           1       model.fit(x_trn, dummy_y_trn, epochs=240, batch_size=55, verbose=0)
+    82                                             ## Getting predictions
+    83    255.7 MiB      0.2 MiB           1       preds = predict(model,x_tst)
+    84    255.7 MiB      0.0 MiB           1       return preds
+
+
+Filename: tree_memory_testing.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   130    255.7 MiB    255.7 MiB           1       @profile
+   131                                             def insert(self, data):
+   132    255.7 MiB      0.0 MiB           1           self.children.append(Node(data))
+
+
+Filename: tree_memory_testing.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   106    248.9 MiB    248.9 MiB           1   @profile
+   107                                         def predict(model,x):
+   108    249.4 MiB      0.5 MiB           1       preds = np.argmax(model.predict(x), axis=-1)
+   109    249.4 MiB      0.0 MiB         500       for i in range(len(preds)):
+   110    249.4 MiB      0.0 MiB         499           preds[i] = preds[i] + 1
+   111    249.4 MiB      0.0 MiB           1       return preds
+
+
+Filename: tree_memory_testing.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+    70    255.7 MiB    255.7 MiB           1   @profile
+    71                                         def leaf_NN(x_trn, dummy_y_trn, x_tst, num_output):
+    72                                             ## Creating model
+    73    255.7 MiB      0.0 MiB           1       model = Sequential()
+    74                                             ## Adding input layer with sigmoid activation function
+    75    255.7 MiB      0.0 MiB           1       model.add(Dense(8, input_dim=1, activation='sigmoid'))
+    76                                             ## Adding output layer with softmax activation function
+    77    255.7 MiB      0.0 MiB           1       model.add(Dense(num_output, activation='softmax'))
+    78                                             ## Compile model
+    79    255.7 MiB      0.0 MiB           1       model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+    80                                             ## Fitting model
+    81    248.9 MiB     -6.8 MiB           1       model.fit(x_trn, dummy_y_trn, epochs=240, batch_size=55, verbose=0)
+    82                                             ## Getting predictions
+    83    249.4 MiB      0.5 MiB           1       preds = predict(model,x_tst)
+    84    249.4 MiB      0.0 MiB           1       return preds
+
+
+Filename: tree_memory_testing.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   130    249.4 MiB    249.4 MiB           1       @profile
+   131                                             def insert(self, data):
+   132    249.4 MiB      0.0 MiB           1           self.children.append(Node(data))
+
+
+Filename: tree_memory_testing.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   106    254.4 MiB    254.4 MiB           1   @profile
+   107                                         def predict(model,x):
+   108    254.8 MiB      0.4 MiB           1       preds = np.argmax(model.predict(x), axis=-1)
+   109    254.8 MiB      0.0 MiB         500       for i in range(len(preds)):
+   110    254.8 MiB      0.0 MiB         499           preds[i] = preds[i] + 1
+   111    254.8 MiB      0.0 MiB           1       return preds
+
+
+Filename: tree_memory_testing.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+    70    249.4 MiB    249.4 MiB           1   @profile
+    71                                         def leaf_NN(x_trn, dummy_y_trn, x_tst, num_output):
+    72                                             ## Creating model
+    73    249.4 MiB      0.0 MiB           1       model = Sequential()
+    74                                             ## Adding input layer with sigmoid activation function
+    75    249.4 MiB      0.0 MiB           1       model.add(Dense(8, input_dim=1, activation='sigmoid'))
+    76                                             ## Adding output layer with softmax activation function
+    77    249.5 MiB      0.0 MiB           1       model.add(Dense(num_output, activation='softmax'))
+    78                                             ## Compile model
+    79    249.5 MiB      0.0 MiB           1       model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+    80                                             ## Fitting model
+    81    254.4 MiB      5.0 MiB           1       model.fit(x_trn, dummy_y_trn, epochs=240, batch_size=55, verbose=0)
+    82                                             ## Getting predictions
+    83    254.8 MiB      0.4 MiB           1       preds = predict(model,x_tst)
+    84    254.8 MiB      0.0 MiB           1       return preds
+
+
+Filename: tree_memory_testing.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   130    254.8 MiB    254.8 MiB           1       @profile
+   131                                             def insert(self, data):
+   132    254.8 MiB      0.0 MiB           1           self.children.append(Node(data))
+
+
+Filename: tree_memory_testing.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   106    260.6 MiB    260.6 MiB           1   @profile
+   107                                         def predict(model,x):
+   108    260.7 MiB      0.1 MiB           1       preds = np.argmax(model.predict(x), axis=-1)
+   109    260.7 MiB      0.0 MiB         500       for i in range(len(preds)):
+   110    260.7 MiB      0.0 MiB         499           preds[i] = preds[i] + 1
+   111    260.7 MiB      0.0 MiB           1       return preds
+
+
+Filename: tree_memory_testing.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+    70    254.8 MiB    254.8 MiB           1   @profile
+    71                                         def leaf_NN(x_trn, dummy_y_trn, x_tst, num_output):
+    72                                             ## Creating model
+    73    254.8 MiB      0.0 MiB           1       model = Sequential()
+    74                                             ## Adding input layer with sigmoid activation function
+    75    254.8 MiB      0.0 MiB           1       model.add(Dense(8, input_dim=1, activation='sigmoid'))
+    76                                             ## Adding output layer with softmax activation function
+    77    254.9 MiB      0.0 MiB           1       model.add(Dense(num_output, activation='softmax'))
+    78                                             ## Compile model
+    79    254.9 MiB      0.0 MiB           1       model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+    80                                             ## Fitting model
+    81    260.6 MiB      5.7 MiB           1       model.fit(x_trn, dummy_y_trn, epochs=240, batch_size=55, verbose=0)
+    82                                             ## Getting predictions
+    83    260.7 MiB      0.1 MiB           1       preds = predict(model,x_tst)
+    84    260.7 MiB      0.0 MiB           1       return preds
+
+
+Filename: tree_memory_testing.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   130    260.7 MiB    260.7 MiB           1       @profile
+   131                                             def insert(self, data):
+   132    260.7 MiB      0.0 MiB           1           self.children.append(Node(data))
+
+
+Filename: tree_memory_testing.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   106    267.0 MiB    267.0 MiB           1   @profile
+   107                                         def predict(model,x):
+   108    267.4 MiB      0.3 MiB           1       preds = np.argmax(model.predict(x), axis=-1)
+   109    267.4 MiB      0.0 MiB         500       for i in range(len(preds)):
+   110    267.4 MiB      0.0 MiB         499           preds[i] = preds[i] + 1
+   111    267.4 MiB      0.0 MiB           1       return preds
+
+
+Accuracy: 86.37
+Filename: tree_memory_testing.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+   114    267.4 MiB    267.4 MiB           1   @profile
+   115                                         def testAccuracy(preds, labels):
+   116    267.4 MiB      0.0 MiB           1       count = 0
+   117    267.4 MiB      0.0 MiB         500       for i in range(len(preds)):
+   118    267.4 MiB      0.0 MiB         499           if(preds[i] == labels[i]):
+   119    267.4 MiB      0.0 MiB         431               count += 1
+   120    267.4 MiB      0.0 MiB           1       final = 100*(count/len(labels))
+   121    267.4 MiB      0.0 MiB           1       return print("Accuracy: %.2f" % (final))
+
+
+Filename: tree_memory_testing.py
+
+Line #    Mem usage    Increment  Occurences   Line Contents
+============================================================
+    87    260.7 MiB    260.7 MiB           1   @profile
+    88                                         def root_NN(weights, pattern, coo, breeds, btype, x_trn, dummy_y_trn):
+    89    260.7 MiB      0.0 MiB           1       model = Sequential()
+    90    260.7 MiB      0.0 MiB           1       model.add(Dense(6, input_dim=5, activation='sigmoid'))
+    91    260.7 MiB      0.0 MiB           1       model.add(Dense(16, activation='sigmoid'))
+    92    260.8 MiB      0.0 MiB           1       model.add(Dense(27, activation='softmax'))
+    93    260.8 MiB      0.0 MiB           1       model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+    94    267.0 MiB      6.3 MiB           1       model.fit(x_trn, dummy_y_trn, epochs=231, batch_size=48, verbose=0)
+    95    267.0 MiB      0.0 MiB           1       pred_root_trn = [weights, pattern, coo, breeds, btype]
+    96    267.0 MiB      0.0 MiB           1       pred_root_trn = np.array(pred_root_trn)
+    97    267.0 MiB      0.0 MiB           1       pred_root_trn = pred_root_trn.T
+    98    267.4 MiB      0.3 MiB           1       preds_root = predict(model,pred_root_trn)
+    99                                             #best_cat = max(preds_root)
+   100                                             #for i in range(len(preds_root)):
+   101                                                 #if(preds_root[i] == best_cat):
+   102                                                     #print("The best cat is cat number: %.0f" % (i))
+   103    267.4 MiB      0.0 MiB           1       return testAccuracy(preds_root,y_root_tst)
+
+

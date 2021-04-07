@@ -43,7 +43,7 @@ rtime = []
 accs = []
 for i in range(len(runtime)):
     #if(runtime[i] < runtime_temp and acc[i] > acc_temp):
-    if(runtime[i] < 45 and acc[i] > 80):
+    if(runtime[i] < 70 and acc[i] > 85):
         leaf_b.append(leaf_batch[i])
         leaf_e.append(leaf_epoch[i])
         root_b.append(root_batch[i])
@@ -59,6 +59,12 @@ print(sum(root_b) / len(root_b))
 print(sum(root_e) / len(root_e))
 print(sum(rtime) / len(rtime))
 print(sum(accs) / len(accs))
+print(leaf_b)
+print(leaf_e)
+print(root_b)
+print(root_e)
+print(rtime)
+print(accs)
 #print(acc_temp)
 #print(runtime_temp)
 #avg_acc = sum(acc_max) / len(acc_max)
