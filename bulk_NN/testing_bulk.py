@@ -1,3 +1,4 @@
+## Importing packages
 import numpy as np
 import pandas as pd
 from keras.models import Sequential
@@ -8,10 +9,11 @@ import os
 import sys
 import random
 
+## Getting data
 dataframe = pd.read_csv("Vivek_Ranged_Data.csv",delimiter="," ,header=None)
 data = dataframe.values
 
-## Training data for leaf networks
+## Splitting training and test data
 x_trn = data[:9000,0:5]
 y_trn = data[:9000,5]
 x_tst = data[9001:10000,0:5]
@@ -24,17 +26,20 @@ dummy_y_trn = np.delete(dummy_y_trn, obj=0, axis=1)
 
 ## Function that creates our neural network
 def bulk_NN(nodes, num_layers, num_input_nodes):
-    # Creating model
+    ## Creating model
     model = Sequential()
 
+    ## Adding input layer with random number of nodes
     model.add(Dense(num_input_nodes, input_dim=5, activation='sigmoid'))
 
+    ## Adding random number of hidden layers with random number of nodes per layer
     for i in range(num_layers):
         model.add(Dense(nodes[i], activation='sigmoid'))
 
     ## Adding output layer with softmax activation function
     model.add(Dense(27, activation='softmax'))
-    # Compile model
+
+    ## Compile model
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
     return model
 
@@ -56,8 +61,10 @@ def testAccuracy(preds, labels):
     #return print("Accuracy: %.2f" % (final))
     return final
 
+## Running our infinite while loop that initializes random parameter values
 while True:
 
+    ## Initializing random parameter values
     epochs_num = random.randint(90,300)
     batch_num = random.randint(3,100)
     num_layers = random.randint(1,11)
@@ -67,15 +74,23 @@ while True:
     for i in range(num_layers):
         num_nodes.append(random.randint(1,800))
 
+    ## Getting start time
     start_time = time.time()
+
+    ## Getting neural network with specified random values
     model = bulk_NN(num_nodes, num_layers, num_input_nodes)
 
+    ## Fitting model with random batch size and epochs
     model.fit(x_trn, dummy_y_trn, epochs=epochs_num, batch_size=batch_num, verbose=0)
 
+    ## Predicting on test data and getting accuracy
     predictions = predict(model,x_tst)
     x = testAccuracy(predictions,y_tst)
 
+    ## Getting runtime
     runtime = time.time() - start_time
+
+    ## Outputting all parameter values to their tsv files
 
     r_time = open("bulk_runtimes.tsv", "a")
     r_time_filesize = os.path.getsize("bulk_runtimes.tsv")
@@ -128,4 +143,5 @@ while True:
     input_nodes.write("%.0f" % num_input_nodes)
     input_nodes.close()
 
+    ## while loop will run again in 1 second
     time.sleep(1)

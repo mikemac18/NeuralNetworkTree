@@ -1,3 +1,4 @@
+## Importing packages
 import numpy as np
 import pandas as pd
 from keras.models import Sequential
@@ -5,8 +6,10 @@ from keras.layers import Dense
 from keras.utils import np_utils
 import time
 
+## Getting start time
 start_time = time.time()
 
+## Getting data
 dataframe = pd.read_csv("Vivek_Ranged_Tree_Data.csv",delimiter=",",header=None)
 data = dataframe.values
 
@@ -66,6 +69,7 @@ dummy_y_train_root = np.delete(dummy_y_train_root, obj=0,axis=1)
 
 
 ## Function that creates our neural network for the leafs
+## Using memory profiler
 @profile
 def leaf_NN(x_trn, dummy_y_trn, x_tst, num_output):
     ## Creating model
@@ -83,14 +87,22 @@ def leaf_NN(x_trn, dummy_y_trn, x_tst, num_output):
     return preds
 
 ## Function that creates our root neural network
+## Using memory profiler
 @profile
 def root_NN(weights, pattern, coo, breeds, btype, x_trn, dummy_y_trn):
+    ## Creating model
     model = Sequential()
+    ## Adding input layer
     model.add(Dense(6, input_dim=5, activation='sigmoid'))
+    ## Adding hidden layer
     model.add(Dense(16, activation='sigmoid'))
+    ## Adding output layer
     model.add(Dense(27, activation='softmax'))
+    ## Compile model
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+    ## Fitting model
     model.fit(x_trn, dummy_y_trn, epochs=231, batch_size=48, verbose=0)
+    ## Getting predictions from outputs of leaf networks
     pred_root_trn = [weights, pattern, coo, breeds, btype]
     pred_root_trn = np.array(pred_root_trn)
     pred_root_trn = pred_root_trn.T
@@ -102,6 +114,7 @@ def root_NN(weights, pattern, coo, breeds, btype, x_trn, dummy_y_trn):
     return testAccuracy(preds_root,y_root_tst)
 
 ## Function for predicting labels using keras predict function
+## Using memory profiler
 @profile
 def predict(model,x):
     preds = np.argmax(model.predict(x), axis=-1)
@@ -110,6 +123,7 @@ def predict(model,x):
     return preds
 
 ## Function for testing accuracy of predictions
+## Using memory profiler
 @profile
 def testAccuracy(preds, labels):
     count = 0

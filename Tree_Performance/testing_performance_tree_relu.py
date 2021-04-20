@@ -1,3 +1,4 @@
+## Importing packages
 import numpy as np
 import pandas as pd
 from keras.models import Sequential
@@ -8,6 +9,7 @@ import os
 import sys
 import time
 
+## Getting data
 dataframe = pd.read_csv("Vivek_Ranged_Tree_Data.csv",delimiter=",",header=None)
 data = dataframe.values
 
@@ -83,12 +85,19 @@ def leaf_NN(x_trn, dummy_y_trn, x_tst, num_output, num_epochs, size_of_batch):
 
 ## Function that creates our root neural network
 def root_NN(weights, pattern, coo, breeds, btype, x_trn, dummy_y_trn, num_epochs, size_of_batch):
+    ## Creating model
     model = Sequential()
+    ## Adding input layer
     model.add(Dense(6, input_dim=5, activation='relu'))
+    ## Adding hidden layerr
     model.add(Dense(16, activation='relu'))
+    ## Adding output layer
     model.add(Dense(27, activation='softmax'))
+    ## Compile model
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+    ## Fitting model
     model.fit(x_trn, dummy_y_trn, epochs=num_epochs, batch_size=size_of_batch, verbose=0)
+    ## Getting predictions from outputs of leaf networks
     pred_root_trn = [weights, pattern, coo, breeds, btype]
     pred_root_trn = np.array(pred_root_trn)
     pred_root_trn = pred_root_trn.T
@@ -124,22 +133,32 @@ class Node:
     def insert(self, data):
         self.children.append(Node(data))
 
+## Running tree 20 times with best parameters
 for iteration in range(20):
+    ## Getting start time
     start_time = time.time()
     #root_epochs = random.randint(90,300)
     #leaf_epochs = random.randint(90,300)
     #root_batch = random.randint(3,100)
     #leaf_batch = random.randint(3,100)
+
+    ## Creating tree
     root = Node(1)
+
+    ## Creating leaf networks with best parameters
     root.insert(leaf_NN(x_weights_trn, dummy_y_train_weights, x_weights_tst, 5, 249, 60))
     root.insert(leaf_NN(x_pattern_trn, dummy_y_train_patt, x_pattern_tst, 4, 249, 60))
     root.insert(leaf_NN(x_coo_trn, dummy_y_train_coo, x_coo_tst, 5, 249, 60))
     root.insert(leaf_NN(x_breed_trn, dummy_y_train_breed, x_breed_tst, 5, 249, 60))
     root.insert(leaf_NN(x_btype_trn, dummy_y_train_btype, x_btype_tst, 8, 249, 60))
 
+    ## Updating root node with output from leaf networks
     root.data = root_NN(root.children[0].data, root.children[1].data, root.children[2].data, root.children[3].data, root.children[4].data, x_root_trn, dummy_y_train_root, 202, 59)
 
+    ## Getting runtimee
     runtime = time.time() - start_time
+
+    ## Outputting runtime and accuracies to tsv files
 
     r_time = open("tree_runtimes_perf.tsv", "a")
     r_time_filesize = os.path.getsize("tree_runtimes_perf.tsv")

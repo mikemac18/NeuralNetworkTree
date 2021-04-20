@@ -1,9 +1,12 @@
+## Importing packages
 import numpy as np
 import pandas as pd
 
+## Getting data
 dataframe = pd.read_csv("bulk_nodes.tsv", delimiter=",", header=None)
 bulk_nodes = dataframe.values
 
+## Getting data from tsv files
 bulk_acc = np.genfromtxt('bulkNN_accuracies.tsv', delimiter='\t')
 bulk_batch = np.genfromtxt('num_batch.tsv', delimiter='\t')
 bulk_epoch = np.genfromtxt('num_epochs.tsv', delimiter='\t')
@@ -12,8 +15,10 @@ bulk_num_layers = np.genfromtxt('bulk_layers.tsv', delimiter='\t')
 input_nodes = np.genfromtxt('input_nodes.tsv', delimiter='\t')
 runtimes = np.genfromtxt('bulk_runtimes.tsv', delimiter='\t')
 
+## Printing average accuracy from the bulk accuracies
 print(sum(bulk_acc) / len(bulk_acc))
 
+'''
 acc_indeces = np.zeros(3)
 acc_max = np.zeros(3)
 bulk_b_index = np.zeros(3)
@@ -24,7 +29,7 @@ bulk_node_input_index = np.zeros(3)
 bulk_runtimes = np.zeros(3)
 acc_list = bulk_acc.tolist()
 
-'''for i in range(len(acc_indeces)):
+    for i in range(len(acc_indeces)):
     max_num = max(acc_list)
     max_index = acc_list.index(max_num)
     acc_indeces[i] = max_index
@@ -43,6 +48,7 @@ acc_list = bulk_acc.tolist()
     bulk_node_input_index[i] = bulk_node_input
     bulk_runtimes[i] = bulk_runtime'''
 
+## Getting the data that produced the best results
 bulk_b = []
 bulk_e = []
 bulk_numl = []
@@ -63,6 +69,7 @@ for i in range(len(runtimes)):
         #runtime_temp = runtime[i]
         #acc_temp = acc[i]
 
+## Printing the average best results
 print(sum(bulk_b) / len(bulk_b))
 print(sum(bulk_e) / len(bulk_e))
 print(sum(bulk_numl) / len(bulk_numl))
@@ -70,6 +77,8 @@ print(sum(bulk_numl) / len(bulk_numl))
 print(sum(bulk_in) / len(bulk_in))
 print(sum(rtime) / len(rtime))
 print(sum(accs) / len(accs))
+
+## Printing best results
 print(bulk_b)
 print(bulk_e)
 print(bulk_numl)

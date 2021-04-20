@@ -4,7 +4,8 @@ Testing performance of neural network tree versus a single (bulk) neural network
 Overview of Files:
 
 - Final_Data_Mappings_10000.xlsx -> Our data mappings for the data we used to train and test our neural networks with. We created the feature data by randomly assigning a number within a certain range with a Gaussian distribution. The labels were obtained by mapping each range in the feature data, to a specific "star rating", or label
-- Vivek_Ranged_Data.csv (This file is in all folders) -> Our hardcoded data from the Final Mappings Data File
+- Vivek_Ranged_Data.csv -> Our hardcoded data from the Final Mappings Data File for the bulk neural network
+- Vivek_Ranged_Tree_Data.csv - Our hardcoded data from the Final Mappings Data File for the tree neural network
 - Data_Screenshot.png -> Screenshot of our data
 - accuracy_vs_runtime.png -> Plot that compares the accuracy and runtime of the tree versus bulk (regular) neural network, for 20 runs.
 

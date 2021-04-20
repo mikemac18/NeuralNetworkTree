@@ -1,5 +1,7 @@
+## Importing packages
 import numpy as np
 
+## Getting data from tsv files
 acc = np.genfromtxt('accuracies_sigmoid.tsv', delimiter='\t')
 leaf_batch = np.genfromtxt('leaf_batch_size.tsv', delimiter='\t')
 leaf_epoch = np.genfromtxt('leaf_epochs.tsv', delimiter='\t')
@@ -7,8 +9,10 @@ root_batch = np.genfromtxt('root_batch.tsv', delimiter='\t')
 root_epoch = np.genfromtxt('root_epochs.tsv', delimiter='\t')
 runtime = np.genfromtxt('tree_runtimes.tsv', delimiter='\t')
 
+## Printing average accuracy
 print(sum(acc) / len(acc))
 
+'''
 acc_indeces = np.zeros(5)
 acc_max = np.zeros(5)
 lf_b_index = np.zeros(5)
@@ -18,7 +22,7 @@ rt_e_index = np.zeros(5)
 runtime_index = np.zeros(5)
 
 new_acc = acc.tolist()
-'''for i in range(len(acc_indeces)):
+    for i in range(len(acc_indeces)):
     max_num = max(new_acc)
     max_index = new_acc.index(max_num)
     acc_indeces[i] = max_index
@@ -37,6 +41,8 @@ new_acc = acc.tolist()
 
 #runtime_temp = runtime[1]
 #acc_temp = acc[1]
+
+## Below we are getting data from best runs
 leaf_b = []
 leaf_e = []
 root_b = []
@@ -55,18 +61,22 @@ for i in range(len(runtime)):
         #runtime_temp = runtime[i]
         #acc_temp = acc[i]
 
+## Printing average data from best runs
 print(sum(leaf_b) / len(leaf_b))
 print(sum(leaf_e) / len(leaf_e))
 print(sum(root_b) / len(root_b))
 print(sum(root_e) / len(root_e))
 print(sum(rtime) / len(rtime))
 print(sum(accs) / len(accs))
+
+## Printing data from best runs
 print(leaf_b)
 print(leaf_e)
 print(root_b)
 print(root_e)
 print(rtime)
 print(accs)
+
 #print(acc_temp)
 #print(runtime_temp)
 #avg_acc = sum(acc_max) / len(acc_max)
