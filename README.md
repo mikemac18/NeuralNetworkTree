@@ -32,6 +32,3 @@ Tree_Performance:
 - .tsv files -> Where we outputted the runtimes and accuracies of the 20 runs with the best parameters.
 - mprof .png files -> Our memory plots for the tree neural network with the sigmoid and rectified linear activation functions
 - runtime_vs_accuracy plots -> Plots produced from the excel file.
-
-
-modification @ 18:36
