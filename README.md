@@ -8,12 +8,7 @@ Overview of Files:
 - Vivek_Ranged_Tree_Data.csv - Our hardcoded data from the Final Mappings Data File for the tree neural network
 - Data_Screenshot.png -> Screenshot of our data
 - accuracy_vs_runtime.png -> Plot that compares the accuracy and runtime of the tree versus bulk (regular) neural network, for 20 runs.
-
-bulk_NN:
-- NeuralNetwork.ipynb -> Our jupyter notebook that we used to build our bulk neural network.
-- testing_bulk.py -> This file was used to test our neural network, to find the optimal number of hidden layers, number of nodes per layer, batch size, and number of epochs. We ran an infinite loop and initialized random values for these parameters, and recorded their values along with the accuracy and runtime, for each run. These values were outputted to all the different .tsv files.
-- analyzing_bulk.py -> This file was used to analyze the data we collected in all of our .tsv files. We wanted to find the run with the highest accuracy, and lowest runtime.
-- .tsv files -> These files are where we outputted our values for each parameter after each time the bulk neural network ran.
+- Code_to_Generate_Gaussians.py -> This file was used to generate our random feature data, that was Gaussian distributed.
 
 Tree_Of_NNs:
 - NN_Tree.ipynb -> Our jupyter notebook that we used to build our tree neural network.
@@ -33,3 +28,15 @@ Tree_Performance:
 - .tsv files -> Where we outputted the runtimes and accuracies of the 20 runs with the best parameters.
 - mprof .png files -> Our memory plots for the tree neural network with the sigmoid and rectified linear activation functions
 - runtime_vs_accuracy plots -> Plots produced from the excel file.
+
+
+bulk_NN:
+- NeuralNetwork.ipynb -> Our jupyter notebook that we used to build our bulk neural network.
+- testing_bulk.py -> This file was used to test our neural network, to find the optimal number of hidden layers, number of nodes per layer, batch size, and number of epochs. We ran an infinite loop and initialized random values for these parameters, and recorded their values along with the accuracy and runtime, for each run. These values were outputted to all the different .tsv files.
+- analyzing_bulk.py -> This file was used to analyze the data we collected in all of our .tsv files. We wanted to find the run with the highest accuracy, and lowest runtime.
+- .tsv files -> These files are where we outputted our values for each parameter after each time the bulk neural network ran.
+
+Bulk_Performance:
+- Bulk NN - memory test with mprof.py -> This file was used to test the memory use of the bulk NN.
+- Bulk NN - stopwatch test for 20 runs.html -> Log of runtimes and accuracies for 20 runs with the bulk NN with its best parameters.
+- Bulk NN - stopwatch test for 20 runs.py -> This file was used to run the bulk NN 20 times with the best parameters, and output the accuracy and runtime for each run.
