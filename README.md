@@ -1,5 +1,5 @@
 # NeuralNetworkTree
-Testing performance of neural network tree versus a single (bulk) neural network
+Testing performance of neural network tree versus a single (bulk) neural network. Our goal was to see if there are any performance benefits in terms of runtime and memory when using a tree of neural networks versus a regular (bulk) neural network. The description of each file and its purpose is below.
 
 Overview of Files:
 
