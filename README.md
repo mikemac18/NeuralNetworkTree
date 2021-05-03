@@ -1,6 +1,8 @@
 # NeuralNetworkTree
 Testing performance of neural network tree versus a single (bulk) neural network. Our goal was to see if there are any performance benefits in terms of runtime and memory when using a tree of neural networks versus a regular (bulk) neural network. The description of each file and its purpose is below.
 
+Our results are shown in the accuracy_vs_runtime.png file, as well as in the performance folders. We found that on average, the tree had higher accuracy and faster runtime, and also only needed to be trained on half the data as compared to the bulk network. 
+
 Overview of Files:
 
 - Final_Data_Mappings_10000.xlsx -> Our data mappings for the data we used to train and test our neural networks with. We created the feature data by randomly assigning a number within a certain range with a Gaussian distribution. The labels were obtained by mapping each range in the feature data, to a specific "star rating", or label
